@@ -11,15 +11,15 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#define cellNameFont [UIFont systemFontOfSize:14]
+#define cellNameFont [UIFont systemFontOfSize:15]
 //时间字体
-#define cellTimeFont [UIFont systemFontOfSize:12]
+#define cellTimeFont [UIFont systemFontOfSize:13]
 //来源字体
-#define cellSourceFont [UIFont systemFontOfSize:12]
+#define cellSourceFont [UIFont systemFontOfSize:13]
 //正文字体
-#define cellContentFont [UIFont systemFontOfSize:14]
+#define cellContentFont [UIFont systemFontOfSize:15]
 //被转发字体
-#define cellRetweetContentFont [UIFont systemFontOfSize:14]
+#define cellRetweetContentFont [UIFont systemFontOfSize:15]
 #define cellMarginW 5
 #define cellBorderW 6
 

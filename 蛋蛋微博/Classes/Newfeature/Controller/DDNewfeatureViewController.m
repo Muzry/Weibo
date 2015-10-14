@@ -77,7 +77,7 @@
     [shareBtn setImage:[UIImage imageNamed:@"new_feature_share_true"] forState:UIControlStateSelected];
     [shareBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [shareBtn setTitle:@"分享给大家"  forState:UIControlStateNormal];
-    shareBtn.titleLabel.font = [UIFont systemFontOfSize:15];
+    shareBtn.titleLabel.font = [UIFont systemFontOfSize:18];
     shareBtn.width = 200;
     shareBtn.height = 30; 
     shareBtn.centerX = imageView.width * 0.5;

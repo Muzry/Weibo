@@ -116,7 +116,7 @@
     textView.frame = self.view.bounds;
     textView.alwaysBounceVertical = YES;
     textView.placeholder = @"分享新鲜事...";
-    textView.font = [UIFont systemFontOfSize:16];
+    textView.font = [UIFont systemFontOfSize:18];
     textView.delegate = self;
     self.textView = textView;
     
