@@ -60,7 +60,7 @@
     CGFloat contentX = iconX;
     CGFloat contentY = MAX(CGRectGetMaxY(self.iconViewF), CGRectGetMaxY(self.timelabelF)) + cellBorderW;
     CGFloat maxW = cellW - 2 * contentX;
-    CGSize contentSize = [status.text sizeWithLabelFont:cellContentFont maxW:maxW];
+    CGSize contentSize = [status.attributedText boundingRectWithSize:CGSizeMake(maxW, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin context:nil].size;
     self.contentlabelF = (CGRect){{contentX,contentY},contentSize};
     
     /* 配图*/
@@ -94,11 +94,9 @@
     {
         /* 被转发微博正文 */
         Statuses *retweeted_status = status.retweeted_status;
-        UserInfo *retweeted_status_user = status.retweeted_status.user;
-        NSString *retweetContent = [NSString stringWithFormat:@"@%@ : %@",retweeted_status_user.name,retweeted_status.text];
         CGFloat retweetContentX = cellBorderW;
         CGFloat retweetContentY = cellBorderW;
-        CGSize retweetContentSize = [retweetContent sizeWithLabelFont:cellRetweetContentFont maxW:maxW];
+        CGSize retweetContentSize = [status.retweeted_status.attributedText boundingRectWithSize:CGSizeMake(maxW, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin context:nil].size;
         
         self.retweetContentLabelF = (CGRect){{retweetContentX,retweetContentY},retweetContentSize};
 
