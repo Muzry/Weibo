@@ -230,7 +230,7 @@
     self.sourcelabel.textColor = [UIColor colorWithRed:122/255.0 green:122/255.0 blue:122/255.0 alpha:1];
     
     /** 正文*/
-    self.contentlabel.text = status.text;
+    self.contentlabel.attributedText = status.attributedText;
     self.contentlabel.frame = statusFrame.contentlabelF;
     
     /** 被转发的微博*/
@@ -239,14 +239,12 @@
     if(status.retweeted_status)
     {
         Statuses *retweeted_status = status.retweeted_status;
-        UserInfo *retweeted_status_user = status.retweeted_status.user;
         
         self.retweetView.hidden = NO;
         self.retweetView.frame = statusFrame.retweetViewF;
         
         /** 转发微博的正文*/
-        NSString *retweetContent = [NSString stringWithFormat:@"@%@ : %@",retweeted_status_user.name,retweeted_status.text];
-        self.retweetContentLabel.text = retweetContent;
+        self.retweetContentLabel.attributedText = retweeted_status.attributedText;
         self.retweetContentLabel.frame = statusFrame.retweetContentLabelF;
         
         /** 转发微博的配图*/

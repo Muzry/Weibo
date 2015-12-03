@@ -10,8 +10,48 @@
 #import "UserInfo.h"
 #import "DDPhoto.h"
 #import "NSDate+Extension.h"
+#import "RegexKitLite.h"
+
 
 @implementation Statuses
+
+
+-(NSMutableAttributedString *)attributedTextWithText:(NSString *)text
+{
+    
+    //利用text 生成attributedText
+    NSMutableAttributedString *attributedText = [[NSMutableAttributedString alloc] initWithString:text];
+    
+    // 表情的规则
+    NSString *emotionPattern = @"\\[[0-9a-zA-Z\\u4e00-\\u9fa5]+\\]";
+    // @的规则
+    NSString *atPattern = @"@[0-9a-zA-Z\\u4e00-\\u9fa5-_]+";
+    // #话题#的规则
+    NSString *topicPattern = @"#[0-9a-zA-Z\\u4e00-\\u9fa5]+#";
+    // url链接的规则
+    NSString *urlPattern = @"\\b(([\\w-]+://?|www[.])[^\\s()<>]+(?:\\([\\w\\d]+\\)|([^[:punct:]\\s]|/)))";
+    NSString *pattern = [NSString stringWithFormat:@"%@|%@|%@|%@", emotionPattern, atPattern, topicPattern, urlPattern];
+    
+    // 遍历所有特殊字符串
+    [text enumerateStringsMatchedByRegex:pattern usingBlock:^(NSInteger captureCount, NSString *const __unsafe_unretained *capturedStrings, const NSRange *capturedRanges, volatile BOOL *const stop) {
+        [attributedText addAttribute:NSForegroundColorAttributeName value:[UIColor blueColor] range:*capturedRanges];
+    }];
+    return attributedText;
+}
+
+- (void)setText:(NSString *)text
+{
+    _text = [text copy];
+
+    self.attributedText = [self attributedTextWithText:text];
+}
+
+-(void)setRetweeted_status:(Statuses *)retweeted_status
+{
+    _retweeted_status = retweeted_status;
+    NSString *retweetContent = [NSString stringWithFormat:@"@%@ : %@",retweeted_status.user.name,retweeted_status.text];
+    retweeted_status.attributedText = [self attributedTextWithText:retweetContent];
+}
 
 -(NSString *)created_at
 {

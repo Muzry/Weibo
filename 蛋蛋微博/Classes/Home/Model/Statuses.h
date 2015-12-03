@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "UIKit/UIKit.h"
 @class UserInfo,Statuses;
 
 @interface Statuses : NSObject
@@ -15,6 +16,8 @@
 
 /** string 微博信息内容*/
 @property (nonatomic,copy) NSString *text;
+
+@property (nonatomic,copy)NSAttributedString *attributedText;
 
 /** object 微博作者的用户信息字段*/
 @property (nonatomic,strong) UserInfo* user;
@@ -30,6 +33,8 @@
 
 /**  被转发的原微博信息字段 */
 @property (nonatomic, strong) Statuses *retweeted_status;
+
+@property (nonatomic,copy)NSAttributedString *retweetedAttributedText;
 
 /** int 转发数*/
 @property (nonatomic, assign) int reposts_count;
