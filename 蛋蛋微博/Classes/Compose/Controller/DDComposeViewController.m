@@ -343,7 +343,6 @@
     if (!self.textView.hasText) {
         [self.textView insertText:@"分享图片"];
     }
-
 }
 
 

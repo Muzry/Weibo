@@ -11,6 +11,7 @@
 #import "NSString+Emoji.h"
 #import "UITextView+Extension.h"
 #import "DDEmotionAttachment.h"
+#import "Weibo-Prefix.pch"
 
 @implementation DDEmotionTextView
 
@@ -50,6 +51,8 @@
             
         }];
     }
+    NSNotification *notification = [NSNotification notificationWithName:UITextViewTextDidChangeNotification object:self];
+    [DDNotificationCenter postNotification:notification];
 }
 
 -(NSString *)fullText

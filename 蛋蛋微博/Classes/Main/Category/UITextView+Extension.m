@@ -23,7 +23,7 @@
     
     // 拼接图片
     NSUInteger loc = self.selectedRange.location;
-    [attributedText insertAttributedString:text atIndex:loc];
+    [attributedText replaceCharactersInRange:self.selectedRange withAttributedString:text];
     
     if (settingBlock)
     {
