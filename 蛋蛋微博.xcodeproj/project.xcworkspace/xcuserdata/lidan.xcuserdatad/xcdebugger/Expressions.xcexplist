@@ -34,5 +34,16 @@
             </PersistentString>
          </PersistentStrings>
       </ContextState>
+      <ContextState
+         contextName = "-[DDEmotionKeyBoard emotionDidSelect]:DDEmotionKeyBoard.m">
+         <PersistentStrings>
+            <PersistentString
+               value = " self.recentListView.emotions">
+            </PersistentString>
+            <PersistentString
+               value = "recentEmotions">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
    </ContextStates>
 </VariablesViewState>

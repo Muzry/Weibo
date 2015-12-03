@@ -154,6 +154,7 @@
 {
     // 将表情存进沙盒
     [DDEmotionTool saveRecentEmotion:emotion];
+    
     // 发出通知
     NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
     userInfo[DDSelectemotionKey] = emotion;

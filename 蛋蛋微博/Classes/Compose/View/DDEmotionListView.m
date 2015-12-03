@@ -44,6 +44,7 @@
         
         //只有一页时自动隐藏
         pageControl.hidesForSinglePage = YES;
+        
         [pageControl setValue:[UIImage imageNamed:@"compose_keyboard_dot_normal"] forKey:@"pageImage"];
         [pageControl setValue:[UIImage imageNamed:@"compose_keyboard_dot_selected"] forKey:@"currentPageImage"];
         
@@ -56,6 +57,8 @@
 - (void)setEmotions:(NSArray *)emotions
 {
     _emotions = emotions;
+    
+    [self.scrollerView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     
     NSUInteger count = (emotions.count + DDEmotionPageSize -1) / DDEmotionPageSize;
     //设置页数
@@ -72,8 +75,7 @@
         pageView.emotions = [emotions subarrayWithRange:range];
         [self.scrollerView addSubview:pageView];
     }
-
-
+    [self setNeedsLayout];
 }
 
 -(void)layoutSubviews
@@ -100,6 +102,7 @@
     }
     
     self.scrollerView.contentSize = CGSizeMake(count * self.scrollerView.width, 0);
+    
 }
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView

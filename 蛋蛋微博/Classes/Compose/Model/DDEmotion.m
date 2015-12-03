@@ -13,4 +13,11 @@
 
 MJCodingImplementation //会写进所有属性
 
+
+-(BOOL)isEqual:(DDEmotion *)other
+{
+    return [self.chs isEqualToString:other.chs]
+        || [self.code isEqualToString:other.code];
+}
+
 @end

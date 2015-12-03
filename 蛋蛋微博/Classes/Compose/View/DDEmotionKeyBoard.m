@@ -115,9 +115,19 @@
         self.tabBar = tabBar;
         
         // 监听表情的选中
-        
+        [DDNotificationCenter addObserver:self selector:@selector(emotionDidSelect) name:DDEmotionDidSelect object:nil];
     }
     return self;
+}
+
+-(void)emotionDidSelect
+{
+    self.recentListView.emotions = [DDEmotionTool recentEmotions];
+}
+
+-(void)dealloc
+{
+    [DDNotificationCenter removeObserver:self];
 }
 
 -(void)emotionTabBar:(DDEmotionTabBar *)tabBar didSelectButton:(DDEmotionTabBarButtonType)buttonType
@@ -145,10 +155,10 @@
             [self addSubview:self.lxhListView];
             break;
         }
+        
     }
-    
     self.showingListView = [self.subviews lastObject];
-    [self setNeedsLayout];
+   
 }
 
 -(void)layoutSubviews
