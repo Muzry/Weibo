@@ -11,6 +11,7 @@
 #import "DDEmotionListView.h"
 #import "UIView+Extension.h"
 #import "DDEmotion.h"
+#import "DDEmotionTool.h"
 #import "Weibo-Prefix.pch"
 
 @interface DDEmotionKeyBoard() <DDEmotionTabBarDelegate>
@@ -33,6 +34,8 @@
     if(!_recentListView)
     {
         self.recentListView = [[DDEmotionListView alloc]init];
+        //加载沙盒中的数据
+        self.recentListView.emotions = [DDEmotionTool recentEmotions];
     }
     return _recentListView;
 }
@@ -110,6 +113,9 @@
         tabBar.delegate = self;
         [self addSubview:tabBar];
         self.tabBar = tabBar;
+        
+        // 监听表情的选中
+        
     }
     return self;
 }

@@ -13,6 +13,7 @@
 #import "NSString+Emoji.h"
 #import "DDEmotionPopView.h"
 #import "DDEmotionButton.h"
+#import "DDEmotionTool.h"
 
 @interface DDEmotionPageView()
 
@@ -77,10 +78,7 @@
             
             if (btn)
             {
-                NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
-                userInfo[DDSelectemotionKey] = btn.emotion;
-                
-                [DDNotificationCenter postNotificationName:DDEmotionDidSelect object:nil userInfo:userInfo];
+                [self selectEmotion:btn.emotion];
             }
             
             break;
@@ -144,10 +142,24 @@
         [self.popView removeFromSuperview];
         
     });
+    [self selectEmotion:btn.emotion];
+}
+
+/**
+ *  选中某个表情，发出通知
+ *
+ *  @param emotion 被选中的表情
+ */
+-(void)selectEmotion:(DDEmotion *)emotion
+{
+    // 将表情存进沙盒
+    [DDEmotionTool saveRecentEmotion:emotion];
+    // 发出通知
     NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
-    userInfo[DDSelectemotionKey] = btn.emotion;
+    userInfo[DDSelectemotionKey] = emotion;
     
     [DDNotificationCenter postNotificationName:DDEmotionDidSelect object:nil userInfo:userInfo];
+
 }
 
 @end

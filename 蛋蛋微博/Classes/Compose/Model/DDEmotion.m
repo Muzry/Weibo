@@ -7,7 +7,10 @@
 //
 
 #import "DDEmotion.h"
+#import "MJExtension.h"
 
 @implementation DDEmotion
+
+MJCodingImplementation //会写进所有属性
 
 @end

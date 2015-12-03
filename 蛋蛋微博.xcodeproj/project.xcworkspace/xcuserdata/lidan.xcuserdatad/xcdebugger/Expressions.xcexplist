@@ -3,6 +3,14 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "-[DDComposeViewController imagePickerController:didFinishPickingMediaWithInfo:]:DDComposeViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.textView.text">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "-[DDTextView drawRect:]:DDTextView.m">
          <PersistentStrings>
             <PersistentString
@@ -15,14 +23,6 @@
          <PersistentStrings>
             <PersistentString
                value = "self.subviews">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "-[DDComposeViewController imagePickerController:didFinishPickingMediaWithInfo:]:DDComposeViewController.m">
-         <PersistentStrings>
-            <PersistentString
-               value = "self.textView.text">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

@@ -41,6 +41,9 @@
         UIPageControl *pageControl = [[UIPageControl alloc]init];
         
         pageControl.userInteractionEnabled = NO;
+        
+        //只有一页时自动隐藏
+        pageControl.hidesForSinglePage = YES;
         [pageControl setValue:[UIImage imageNamed:@"compose_keyboard_dot_normal"] forKey:@"pageImage"];
         [pageControl setValue:[UIImage imageNamed:@"compose_keyboard_dot_selected"] forKey:@"currentPageImage"];
         
@@ -55,7 +58,7 @@
     _emotions = emotions;
     
     NSUInteger count = (emotions.count + DDEmotionPageSize -1) / DDEmotionPageSize;
- 
+    //设置页数
     
     self.pageControl.numberOfPages = count;
     for (int i = 0;i < self.pageControl.numberOfPages; i++)

@@ -7,6 +7,7 @@
 //
 
 #import "DDAccount.h"
+#import "MJExtension.h"
 
 @implementation DDAccount
 
@@ -20,6 +21,8 @@
     
     return account;
 }
+
+
 
 - (void)encodeWithCoder:(NSCoder *)enCoder
 {
