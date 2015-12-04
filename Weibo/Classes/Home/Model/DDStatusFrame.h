@@ -17,8 +17,8 @@
 //来源字体
 #define cellSourceFont [UIFont systemFontOfSize:13]
 
-#define cellMarginW 8
-#define cellBorderW 10
+#define cellMarginW 6
+#define cellBorderW 8
 
 
 @class Statuses;
