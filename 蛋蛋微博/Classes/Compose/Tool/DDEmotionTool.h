@@ -12,8 +12,23 @@
 
 @interface DDEmotionTool : NSObject
 
+
+// 添加最近表情
 + (void)saveRecentEmotion:(DDEmotion *)emotion;
 
+//获取最近表情
 + (NSArray *)recentEmotions;
+
+//获取默认表情
++ (NSArray *)defaultEmotions;
+
+//获取浪小花表情
++ (NSArray *)lxhEmotions;
+
+//获取emoji表情
++ (NSArray *)emojiEmotions;
+
++ (DDEmotion *)emotionWithChs:(NSString*)chs;
+
 
 @end

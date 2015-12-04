@@ -45,18 +45,7 @@
     if (!_defaultListView)
     {
         self.defaultListView = [[DDEmotionListView alloc]init];
-        NSString *path =[[NSBundle mainBundle] pathForResource:@"EmotionIcons/default/info.plist" ofType:nil];
-        NSArray *defaultEmotion = [NSArray arrayWithContentsOfFile:path];
-        NSMutableArray *newEmotions = [NSMutableArray array];
-        for (NSDictionary *ob in defaultEmotion)
-        {
-            DDEmotion *emotion = [[DDEmotion alloc]init];
-            emotion.chs = ob[@"chs"];
-            emotion.png = ob[@"png"];
-            NSLog(@"%@",emotion.png);
-            [newEmotions addObject:emotion];
-        }
-        self.defaultListView.emotions = newEmotions;
+        self.defaultListView.emotions = [DDEmotionTool defaultEmotions];
     }
     return _defaultListView;
 }
@@ -66,18 +55,7 @@
     if (!_emojiListView)
     {
         self.emojiListView = [[DDEmotionListView alloc]init];
-        NSString *path =[[NSBundle mainBundle] pathForResource:@"EmotionIcons/emoji/info.plist" ofType:nil];
-        NSArray *emojiEmotion = [NSArray arrayWithContentsOfFile:path];
-        
-        NSMutableArray *newEmotions = [NSMutableArray array];
-        for (NSDictionary *ob in emojiEmotion)
-        {
-            DDEmotion *emotion = [[DDEmotion alloc]init];
-            emotion.chs = ob[@"chs"];
-            emotion.code = ob[@"code"];
-            [newEmotions addObject:emotion];
-        }
-        self.emojiListView.emotions = newEmotions;
+        self.emojiListView.emotions = [DDEmotionTool emojiEmotions];
     }
     return _emojiListView;
 }
@@ -87,19 +65,7 @@
     if (!_lxhListView)
     {
         self.lxhListView = [[DDEmotionListView alloc]init];
-        NSString *path =[[NSBundle mainBundle] pathForResource:@"EmotionIcons/lxh/info.plist" ofType:nil];
-        NSArray *lxhEmotion = [NSArray arrayWithContentsOfFile:path];
-        
-        NSMutableArray *newEmotions = [NSMutableArray array];
-        for (NSDictionary *ob in lxhEmotion)
-        {
-            DDEmotion *emotion = [[DDEmotion alloc]init];
-            emotion.chs = ob[@"chs"];
-            emotion.png = ob[@"png"];
-            [newEmotions addObject:emotion];
-        }
-        self.lxhListView.emotions = newEmotions;
-        
+        self.lxhListView.emotions = [DDEmotionTool lxhEmotions];
     }
     return _lxhListView;
 }

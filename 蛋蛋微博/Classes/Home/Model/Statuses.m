@@ -13,6 +13,8 @@
 #import "RegexKitLite.h"
 #import "Weibo-Prefix.pch"
 #import "DDTextPart.h"
+#import "DDEmotionTool.h"
+#import "DDEmotion.h"
 
 
 @implementation Statuses
@@ -74,16 +76,25 @@
         return part1.range.location > part2.range.location ? NSOrderedDescending : NSOrderedAscending;
     }];
     
-    
     for (DDTextPart *part in parts)
     {
         NSAttributedString * subStr = nil;
         if (part.isEmotion)
         {
             NSTextAttachment *attach = [[NSTextAttachment alloc]init];
-            attach.image = [UIImage imageNamed:@"d_aini"];
-            attach.bounds = CGRectMake(0, -3, 18, 18);
-            subStr = [NSAttributedString attributedStringWithAttachment:attach];
+
+            DDEmotion *emotion = [DDEmotionTool emotionWithChs:part.text];
+            
+            if (emotion)
+            {
+                attach.image = [UIImage imageNamed:emotion.png];
+                attach.bounds = CGRectMake(0, -3, 18, 18);
+                subStr = [NSAttributedString attributedStringWithAttachment:attach];
+            }
+            else // 表情图片不存在
+            {
+                subStr = [[NSAttributedString alloc ] initWithString:part.text];
+            }
         }
         else if (part.isURL)
         {

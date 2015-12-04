@@ -8,6 +8,7 @@
 
 #import "DDEmotionTool.h"
 #import "DDEmotion.h"
+#import "MJExtension.h"
 
 
 #define DDRecentEmotionPath [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject]stringByAppendingPathComponent:@"emotions.archive"]
@@ -15,6 +16,10 @@
 @implementation DDEmotionTool
 
 static NSMutableArray *_recentEmotions;
+static NSArray *_emojisEmotions;
+static NSArray *_defaultsEmotions;
+static NSArray *_lxhsEmotions;
+
 
 +(void)initialize
 {
@@ -38,6 +43,57 @@ static NSMutableArray *_recentEmotions;
 +(NSArray *)recentEmotions
 {
     return _recentEmotions;
+}
+
++(NSArray *)defaultEmotions
+{
+    if (!_defaultsEmotions)
+    {
+        NSString *path =[[NSBundle mainBundle] pathForResource:@"EmotionIcons/default/info.plist" ofType:nil];
+        _defaultsEmotions = [DDEmotion objectArrayWithKeyValuesArray:[NSArray arrayWithContentsOfFile:path]];
+    }
+    return _defaultsEmotions;
+}
+
++(NSArray *)emojiEmotions
+{
+    if (!_emojisEmotions)
+    {
+        NSString *path =[[NSBundle mainBundle] pathForResource:@"EmotionIcons/emoji/info.plist" ofType:nil];
+        _emojisEmotions = [DDEmotion objectArrayWithKeyValuesArray:[NSArray arrayWithContentsOfFile:path]];
+    }
+    return _emojisEmotions;
+}
+
++(NSArray *)lxhEmotions
+{
+    if (!_lxhsEmotions)
+    {
+        NSString *path =[[NSBundle mainBundle] pathForResource:@"EmotionIcons/lxh/info.plist" ofType:nil];
+        _lxhsEmotions = [DDEmotion objectArrayWithKeyValuesArray:[NSArray arrayWithContentsOfFile:path]];
+    }
+    return _lxhsEmotions;
+}
+
++(DDEmotion *)emotionWithChs:(NSString *)chs
+{
+    NSArray *defaults = [self defaultEmotions];
+    for (DDEmotion * emotion in defaults)
+    {
+        if ([emotion.chs isEqualToString:chs])
+        {
+            return emotion;
+        }
+    }
+    NSArray *lxhs = [self lxhEmotions];
+    for (DDEmotion * emotion in lxhs)
+    {
+        if ([emotion.chs isEqualToString:chs])
+        {
+            return emotion;
+        }
+    }
+    return nil;
 }
 
 @end
