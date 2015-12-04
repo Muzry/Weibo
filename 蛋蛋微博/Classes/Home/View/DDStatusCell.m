@@ -131,7 +131,6 @@
     
     /** 正文*/
     UILabel *contentlabel= [[UILabel alloc]init];
-    contentlabel.font = cellContentFont;
     contentlabel.numberOfLines = 0;
     [self.originalView addSubview:contentlabel];
     self.contentlabel = contentlabel;
@@ -146,7 +145,6 @@
     
     /** 正文*/
     UILabel *retweetContentlabel= [[UILabel alloc]init];
-    retweetContentlabel.font = cellRetweetContentFont;
     retweetContentlabel.numberOfLines = 0;
     [retweetView addSubview:retweetContentlabel];
     self.retweetContentLabel = retweetContentlabel;

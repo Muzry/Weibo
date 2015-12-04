@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x86cb;&#x86cb;&#x5fae;&#x535a;/Classes/Home/Model/DDStatusFrame.h"
-            timestampString = "462449194.679389"
+            timestampString = "470893524.921714"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
             landmarkName = "originalViewF"
             landmarkType = "19">
          </BreakpointContent>

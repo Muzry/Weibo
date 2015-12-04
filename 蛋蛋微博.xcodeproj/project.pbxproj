@@ -39,6 +39,7 @@
 		D6201BC61C104D75000CEB80 /* UIView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = D6201BBE1C104D75000CEB80 /* UIView+MJExtension.m */; };
 		D6201BCA1C104D7B000CEB80 /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = D6201BC91C104D7B000CEB80 /* RegexKitLite.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		D6201BCC1C104E76000CEB80 /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D6201BCB1C104E76000CEB80 /* libicucore.tbd */; };
+		D6201BCF1C113486000CEB80 /* DDTextPart.m in Sources */ = {isa = PBXBuildFile; fileRef = D6201BCE1C113486000CEB80 /* DDTextPart.m */; };
 		D62CE87C1B8ECA8600020549 /* NSDate+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = D62CE87B1B8ECA8600020549 /* NSDate+Extension.m */; };
 		D6398EE11B786E860077F527 /* UIBarButtonItem+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = D6398EE01B786E860077F527 /* UIBarButtonItem+Extension.m */; };
 		D6398EE41B78DA050077F527 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = D6398EE31B78DA050077F527 /* UIView+Extension.m */; };
@@ -190,6 +191,8 @@
 		D6201BC81C104D7B000CEB80 /* RegexKitLite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegexKitLite.h; sourceTree = "<group>"; };
 		D6201BC91C104D7B000CEB80 /* RegexKitLite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegexKitLite.m; sourceTree = "<group>"; };
 		D6201BCB1C104E76000CEB80 /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
+		D6201BCD1C113486000CEB80 /* DDTextPart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDTextPart.h; sourceTree = "<group>"; };
+		D6201BCE1C113486000CEB80 /* DDTextPart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDTextPart.m; sourceTree = "<group>"; };
 		D62CE87A1B8ECA8600020549 /* NSDate+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Extension.h"; sourceTree = "<group>"; };
 		D62CE87B1B8ECA8600020549 /* NSDate+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Extension.m"; sourceTree = "<group>"; };
 		D6398EDF1B786E860077F527 /* UIBarButtonItem+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+Extension.h"; sourceTree = "<group>"; };
@@ -609,6 +612,8 @@
 				D674D4A01B895B2E0011C3EC /* DDStatusFrame.m */,
 				D6C918A21B8C0DC10057F47C /* DDPhoto.h */,
 				D6C918A31B8C0DC10057F47C /* DDPhoto.m */,
+				D6201BCD1C113486000CEB80 /* DDTextPart.h */,
+				D6201BCE1C113486000CEB80 /* DDTextPart.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1075,6 +1080,7 @@
 				D688F8E51B74FA5700EDCF66 /* DiscoverViewController.m in Sources */,
 				D6F4B5B81B82206E00757713 /* MBProgressHUD.m in Sources */,
 				D6201BA31C0FE216000CEB80 /* MJArgument.m in Sources */,
+				D6201BCF1C113486000CEB80 /* DDTextPart.m in Sources */,
 				D6E2ECB41B8196650011E71A /* AFHTTPSessionManager.m in Sources */,
 				D6E2EC9C1B818BE80011E71A /* DDOAuthViewController.m in Sources */,
 				D6DCDBC51B87403C005199DD /* UIImageView+HighlightedWebCache.m in Sources */,

@@ -16,12 +16,9 @@
 #define cellTimeFont [UIFont systemFontOfSize:13]
 //来源字体
 #define cellSourceFont [UIFont systemFontOfSize:13]
-//正文字体
-#define cellContentFont [UIFont systemFontOfSize:15]
-//被转发字体
-#define cellRetweetContentFont [UIFont systemFontOfSize:15]
-#define cellMarginW 5
-#define cellBorderW 6
+
+#define cellMarginW 8
+#define cellBorderW 10
 
 
 @class Statuses;

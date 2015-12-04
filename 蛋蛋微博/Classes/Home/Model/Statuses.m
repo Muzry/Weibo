@@ -11,6 +11,8 @@
 #import "DDPhoto.h"
 #import "NSDate+Extension.h"
 #import "RegexKitLite.h"
+#import "Weibo-Prefix.pch"
+#import "DDTextPart.h"
 
 
 @implementation Statuses
@@ -20,25 +22,102 @@
 {
     
     //利用text 生成attributedText
-    NSMutableAttributedString *attributedText = [[NSMutableAttributedString alloc] initWithString:text];
+    NSMutableAttributedString *attributedText = [[NSMutableAttributedString alloc] init];
     
     // 表情的规则
     NSString *emotionPattern = @"\\[[0-9a-zA-Z\\u4e00-\\u9fa5]+\\]";
     // @的规则
     NSString *atPattern = @"@[0-9a-zA-Z\\u4e00-\\u9fa5-_]+";
     // #话题#的规则
-    NSString *topicPattern = @"#[0-9a-zA-Z\\u4e00-\\u9fa5]+#";
+    NSString *topicPattern = @"#[0-9a-zA-Z\\u4e00-\\u9fa5\\.]+#";
     // url链接的规则
-    NSString *urlPattern = @"\\b(([\\w-]+://?|www[.])[^\\s()<>]+(?:\\([\\w\\d]+\\)|([^[:punct:]\\s]|/)))";
+    NSString *urlPattern = @"(http|ftp|https):\\/\\/[\\w\\-_]+(\\.[\\w\\-_]+)+([\\w\\-\\.,@?^=%&amp;:/~\\+#]*[\\w\\-\\@?^=%&amp;/~\\+#])?";
     NSString *pattern = [NSString stringWithFormat:@"%@|%@|%@|%@", emotionPattern, atPattern, topicPattern, urlPattern];
     
     // 遍历所有特殊字符串
+    
+    // 存储特殊字符
+    NSMutableArray *parts = [NSMutableArray array];
+    
     [text enumerateStringsMatchedByRegex:pattern usingBlock:^(NSInteger captureCount, NSString *const __unsafe_unretained *capturedStrings, const NSRange *capturedRanges, volatile BOOL *const stop) {
-        [attributedText addAttribute:NSForegroundColorAttributeName value:[UIColor blueColor] range:*capturedRanges];
+        
+        if ((*capturedRanges).length == 0 || [(*capturedStrings) isEqualToString:@"@(null) : (null)"])
+        {
+            return ;
+        }
+        DDTextPart *part = [[DDTextPart alloc]init];
+        part.text = *capturedStrings;
+        part.range = *capturedRanges;
+        part.emotion = [part.text hasPrefix:@"["] && [part.text hasSuffix:@"]"];
+        part.url = [part.text hasPrefix:@"http"];
+        part.special = YES;
+        [parts addObject: part];
     }];
     
-    [attributedText addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:15] range:NSMakeRange(0, attributedText.length)];
     
+    // 遍历所有非特殊字符串
+    
+    [text enumerateStringsSeparatedByRegex:pattern usingBlock:^(NSInteger captureCount, NSString *const __unsafe_unretained *capturedStrings, const NSRange *capturedRanges, volatile BOOL *const stop) {
+        if ((*capturedRanges).length == 0 || [(*capturedStrings) isEqualToString:@"@(null) : (null)"])
+        {
+            return ;
+        }
+        DDTextPart *part = [[DDTextPart alloc]init];
+        part.text = *capturedStrings;
+        part.range = *capturedRanges;
+        [parts addObject: part];
+    }];
+    
+    // 排序
+    
+    [parts sortUsingComparator:^NSComparisonResult(DDTextPart* part1, DDTextPart* part2) {
+        return part1.range.location > part2.range.location ? NSOrderedDescending : NSOrderedAscending;
+    }];
+    
+    
+    for (DDTextPart *part in parts)
+    {
+        NSAttributedString * subStr = nil;
+        if (part.isEmotion)
+        {
+            NSTextAttachment *attach = [[NSTextAttachment alloc]init];
+            attach.image = [UIImage imageNamed:@"d_aini"];
+            attach.bounds = CGRectMake(0, -3, 18, 18);
+            subStr = [NSAttributedString attributedStringWithAttachment:attach];
+        }
+        else if (part.isURL)
+        {
+           subStr = [[NSAttributedString alloc] initWithString:@"网页链接" attributes:@{NSForegroundColorAttributeName:DDColor(72, 120, 172)}];
+        }
+        else if (part.isSpecial)
+        {
+            subStr = [[NSAttributedString alloc] initWithString:part.text attributes:@{NSForegroundColorAttributeName:DDColor(72, 120, 172)}];
+        }
+        else
+        {
+            if (self.retweeted_status)
+            {
+                subStr = [[NSAttributedString alloc] initWithString:part.text attributes:@{NSForegroundColorAttributeName:DDColor(106, 106, 106)}];
+            }
+            else
+            {
+                subStr = [[NSAttributedString alloc] initWithString:part.text attributes:@{NSForegroundColorAttributeName:DDColor(33, 33, 33)}];
+            }
+        }
+        [attributedText appendAttributedString:subStr];
+    }
+    
+    if (self.retweeted_status)
+    {
+        [attributedText addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:15] range:NSMakeRange(0, attributedText.length)];
+
+    }
+    else
+    {
+        [attributedText addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:16] range:NSMakeRange(0, attributedText.length)];
+
+    }
+
     return attributedText;
 }
 
