@@ -53,6 +53,7 @@
             DDEmotion *emotion = [[DDEmotion alloc]init];
             emotion.chs = ob[@"chs"];
             emotion.png = ob[@"png"];
+            NSLog(@"%@",emotion.png);
             [newEmotions addObject:emotion];
         }
         self.defaultListView.emotions = newEmotions;

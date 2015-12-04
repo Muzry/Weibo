@@ -42,7 +42,8 @@
     _emotion = emotion;
     if (emotion.png)
     {
-        [self setImage:[UIImage imageNamed:emotion.png] forState:UIControlStateNormal];
+        UIImage *image = [UIImage imageNamed:emotion.png];
+        [self setImage:image forState:UIControlStateNormal];
     }
     else
     {

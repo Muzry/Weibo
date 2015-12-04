@@ -3,6 +3,14 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "-[DDComposeViewController textDidChange]:DDComposeViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = " self.textView.hasText">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "-[DDComposeViewController imagePickerController:didFinishPickingMediaWithInfo:]:DDComposeViewController.m">
          <PersistentStrings>
             <PersistentString
@@ -27,10 +35,19 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "-[DDComposeViewController textDidChange]:DDComposeViewController.m">
+         contextName = "+[DDEmotionTool saveRecentEmotion:]:DDEmotionTool.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[DDEmotionKeyBoard defaultListView]:DDEmotionKeyBoard.m">
+      </ContextState>
+      <ContextState
+         contextName = "__35-[Statuses attributedTextWithText:]_block_invoke29:Statuses.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[DDEmotionButton setEmotion:]:DDEmotionButton.m">
          <PersistentStrings>
             <PersistentString
-               value = " self.textView.hasText">
+               value = "[UIImage imageNamed:emotion.png]">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
