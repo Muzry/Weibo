@@ -51,7 +51,6 @@ static NSArray *_lxhsEmotions;
     {
         NSString *path =[[NSBundle mainBundle] pathForResource:@"defaultinfo.plist" ofType:nil];
         _defaultsEmotions = [DDEmotion objectArrayWithKeyValuesArray:[NSArray arrayWithContentsOfFile:path]];
-        NSLog(@"%zd",_defaultsEmotions.count);
     }
     return _defaultsEmotions;
 }

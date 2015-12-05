@@ -15,6 +15,7 @@
 #import "DDTextPart.h"
 #import "DDEmotionTool.h"
 #import "DDEmotion.h"
+#import "DDSpecialText.h"
 
 
 @implementation Statuses
@@ -76,6 +77,8 @@
         return part1.range.location > part2.range.location ? NSOrderedDescending : NSOrderedAscending;
     }];
     
+    NSMutableArray *specials = [NSMutableArray array];
+    
     for (DDTextPart *part in parts)
     {
         NSAttributedString * subStr = nil;
@@ -99,10 +102,18 @@
         else if (part.isURL)
         {
            subStr = [[NSAttributedString alloc] initWithString:@"网页链接" attributes:@{NSForegroundColorAttributeName:DDColor(72, 120, 172)}];
+            DDSpecialText *special = [[DDSpecialText alloc]init];
+            special.text = part.text;
+            special.range = NSMakeRange(attributedText.length, subStr.length);
+            [specials addObject:special];
         }
         else if (part.isSpecial)
         {
             subStr = [[NSAttributedString alloc] initWithString:part.text attributes:@{NSForegroundColorAttributeName:DDColor(72, 120, 172)}];
+            DDSpecialText *special = [[DDSpecialText alloc]init];
+            special.text = part.text;
+            special.range = NSMakeRange(attributedText.length, part.text.length);
+            [specials addObject:special];
         }
         else
         {
@@ -121,14 +132,12 @@
     if (self.retweeted_status)
     {
         [attributedText addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:16] range:NSMakeRange(0, attributedText.length)];
-
     }
     else
     {
         [attributedText addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:17] range:NSMakeRange(0, attributedText.length)];
-
     }
-
+    [attributedText addAttribute:@"specials" value:specials range:NSMakeRange(0, 1)];
     return attributedText;
 }
 
@@ -142,7 +151,16 @@
 -(void)setRetweeted_status:(Statuses *)retweeted_status
 {
     _retweeted_status = retweeted_status;
-    NSString *retweetContent = [NSString stringWithFormat:@"@%@ : %@",retweeted_status.user.name,retweeted_status.text];
+    NSString *retweetContent;
+    if (retweeted_status.user.name)
+    {
+        retweetContent = [NSString stringWithFormat:@"@%@ : %@",retweeted_status.user.name ,retweeted_status.text];
+    }
+    else
+    {
+        retweetContent = [NSString stringWithFormat:@"%@",retweeted_status.text];
+    }
+
     retweeted_status.attributedText = [self attributedTextWithText:retweetContent];
 }
 

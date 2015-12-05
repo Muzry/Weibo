@@ -49,6 +49,7 @@
 		D666D6891B9B2E8F00243AD9 /* DDEmotionPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D666D6881B9B2E8F00243AD9 /* DDEmotionPageView.m */; };
 		D666D68C1B9B3F9F00243AD9 /* NSString+Emoji.m in Sources */ = {isa = PBXBuildFile; fileRef = D666D68B1B9B3F9F00243AD9 /* NSString+Emoji.m */; };
 		D66E517E1C12C13100705EB7 /* DDStatusTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = D66E517D1C12C13100705EB7 /* DDStatusTextView.m */; };
+		D66E51811C12D51100705EB7 /* DDSpecialText.m in Sources */ = {isa = PBXBuildFile; fileRef = D66E51801C12D51100705EB7 /* DDSpecialText.m */; };
 		D674D49B1B8834960011C3EC /* DDLoadMoreFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = D674D49A1B8834960011C3EC /* DDLoadMoreFooter.xib */; };
 		D674D49E1B8954470011C3EC /* DDStatusCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D674D49D1B8954470011C3EC /* DDStatusCell.m */; };
 		D674D4A11B895B2E0011C3EC /* DDStatusFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = D674D4A01B895B2E0011C3EC /* DDStatusFrame.m */; };
@@ -214,6 +215,8 @@
 		D666D68B1B9B3F9F00243AD9 /* NSString+Emoji.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+Emoji.m"; path = "../../Compose/View/NSString+Emoji.m"; sourceTree = "<group>"; };
 		D66E517C1C12C13100705EB7 /* DDStatusTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDStatusTextView.h; sourceTree = "<group>"; };
 		D66E517D1C12C13100705EB7 /* DDStatusTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDStatusTextView.m; sourceTree = "<group>"; };
+		D66E517F1C12D51100705EB7 /* DDSpecialText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDSpecialText.h; sourceTree = "<group>"; };
+		D66E51801C12D51100705EB7 /* DDSpecialText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDSpecialText.m; sourceTree = "<group>"; };
 		D674D49A1B8834960011C3EC /* DDLoadMoreFooter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DDLoadMoreFooter.xib; sourceTree = "<group>"; };
 		D674D49C1B8954470011C3EC /* DDStatusCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDStatusCell.h; sourceTree = "<group>"; };
 		D674D49D1B8954470011C3EC /* DDStatusCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDStatusCell.m; sourceTree = "<group>"; };
@@ -619,6 +622,8 @@
 				D6C918A31B8C0DC10057F47C /* DDPhoto.m */,
 				D6201BCD1C113486000CEB80 /* DDTextPart.h */,
 				D6201BCE1C113486000CEB80 /* DDTextPart.m */,
+				D66E517F1C12D51100705EB7 /* DDSpecialText.h */,
+				D66E51801C12D51100705EB7 /* DDSpecialText.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1088,6 +1093,7 @@
 				D666D68C1B9B3F9F00243AD9 /* NSString+Emoji.m in Sources */,
 				D6201BCA1C104D7B000CEB80 /* RegexKitLite.m in Sources */,
 				D688F8E51B74FA5700EDCF66 /* DiscoverViewController.m in Sources */,
+				D66E51811C12D51100705EB7 /* DDSpecialText.m in Sources */,
 				D6F4B5B81B82206E00757713 /* MBProgressHUD.m in Sources */,
 				D6201BA31C0FE216000CEB80 /* MJArgument.m in Sources */,
 				D6201BCF1C113486000CEB80 /* DDTextPart.m in Sources */,

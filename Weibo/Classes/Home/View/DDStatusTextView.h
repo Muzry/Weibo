@@ -10,4 +10,6 @@
 
 @interface DDStatusTextView : UITextView
 
+@property (nonatomic,strong) NSArray *specials;
+
 @end

@@ -19,6 +19,8 @@
 
 @property (nonatomic,copy)NSAttributedString *attributedText;
 
+@property (nonatomic,strong) NSArray *specials;
+
 /** object 微博作者的用户信息字段*/
 @property (nonatomic,strong) UserInfo* user;
 
@@ -35,6 +37,8 @@
 @property (nonatomic, strong) Statuses *retweeted_status;
 
 @property (nonatomic,copy)NSAttributedString *retweetedAttributedText;
+
+@property (nonatomic,strong) NSArray *retweetedspecials;
 
 /** int 转发数*/
 @property (nonatomic, assign) int reposts_count;

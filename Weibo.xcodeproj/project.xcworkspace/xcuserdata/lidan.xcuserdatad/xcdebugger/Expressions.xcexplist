@@ -3,6 +3,14 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "-[Statuses attributedTextWithText:]:Statuses.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "parts">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "-[DDComposeViewController textDidChange]:DDComposeViewController.m">
          <PersistentStrings>
             <PersistentString
