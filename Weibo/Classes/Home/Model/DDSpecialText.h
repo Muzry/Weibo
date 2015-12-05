@@ -16,4 +16,6 @@
 /** 选取范围 */
 @property (nonatomic,assign) NSRange range;
 
+@property (nonatomic,strong) NSArray *rects;
+
 @end

@@ -27,55 +27,80 @@
     return self;
 }
 
--(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+-(void)setSpecialsRects
 {
-    UITouch *touch = [touches anyObject];
-    
-    CGPoint point = [touch locationInView:self];
-    
     NSArray *specials = [self.attributedText attribute:@"specials" atIndex:0 effectiveRange:NULL];
     
-    BOOL contains = NO;
     for (DDSpecialText *special in specials)
     {
         self.selectedRange = special.range;
         
         // 获得选中范围的矩形框
-        NSArray *rects = [self selectionRectsForRange:self.selectedTextRange];
+        NSArray *selectionRects = [self selectionRectsForRange:self.selectedTextRange];
         
         // 清空选中范围
         self.selectedRange = NSMakeRange(0, 0);
         
-        for (UITextSelectionRect *selectionRect in rects)
+        NSMutableArray *rects = [NSMutableArray array];
+        
+        for (UITextSelectionRect *selectionRect in selectionRects)
         {
             CGRect rect = selectionRect.rect;
             if (rect.size.width == 0 || rect.size.height == 0)
             {
                 continue;
             }
-            if (CGRectContainsPoint(rect, point)) { // 点中了某个特殊字符串
-                contains = YES;
-                break;
-            }
+            [rects addObject:[NSValue valueWithCGRect:rect]];
         }
-            
-        if (contains)
+        special.rects = rects;
+    }
+
+}
+
+/**
+ *  找出被触摸的特殊字符串
+ */
+
+-(DDSpecialText *)touchingSpecialWithPoint:(CGPoint)point
+{
+    NSArray *specials = [self.attributedText attribute:@"specials" atIndex:0 effectiveRange:NULL];
+    
+    for (DDSpecialText *special in specials)
+    {
+        for (NSValue *rectValue in special.rects)
         {
-            for (UITextSelectionRect *selectionRect in rects)
+            if (CGRectContainsPoint(rectValue.CGRectValue, point))
             {
-                CGRect rect = selectionRect.rect;
-                if (rect.size.width == 0 || rect.size.height == 0) continue;
-                
-                UIView *cover = [[UIView alloc] init];
-                cover.backgroundColor = DDColor(190, 223, 254);
-                cover.frame = rect;
-                cover.tag = DDStatusTextViewCoverTag;
-                cover.layer.cornerRadius = 5;
-                [self insertSubview:cover atIndex:0];
+                return special;
             }
-            
-            break;
         }
+    }
+    return nil;
+}
+
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    UITouch *touch = [touches anyObject];
+    
+    //触摸点
+    CGPoint point = [touch locationInView:self];
+    
+    [self setSpecialsRects];
+    
+    // 根据触摸点获取被触摸的特殊字符串
+    
+    DDSpecialText *special = [self touchingSpecialWithPoint:point];
+    
+    for (NSValue *rectValue in special.rects)
+    {
+        CGRect rect = rectValue.CGRectValue;
+        
+        UIView *cover = [[UIView alloc] init];
+        cover.backgroundColor = DDColor(190, 223, 254);
+        cover.frame = rect;
+        cover.tag = DDStatusTextViewCoverTag;
+        cover.layer.cornerRadius = 5;
+        [self insertSubview:cover atIndex:0];
     }
 }
 

@@ -360,4 +360,10 @@
     DDStatusFrame *frame = self.statusFrames[indexPath.row];
     return frame.cellHeight;
 }
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+}
+
 @end
