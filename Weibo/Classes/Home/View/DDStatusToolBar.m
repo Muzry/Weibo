@@ -49,9 +49,9 @@
     if (self)
     {
         self.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"timeline_card_bottom_background"]];
-        self.repostBtn = [self setupBtn:@"转发" icon:@"timeline_icon_retweet"];
-        self.commentBtn = [self setupBtn:@"评论" icon:@"timeline_icon_comment"];
-        self.attitudeBtn = [self setupBtn:@"赞" icon:@"timeline_icon_unlike"];
+        self.repostBtn = [self setupBtn:@" 转发" icon:@"timeline_icon_retweet"];
+        self.commentBtn = [self setupBtn:@" 评论" icon:@"timeline_icon_comment"];
+        self.attitudeBtn = [self setupBtn:@" 赞" icon:@"timeline_icon_unlike"];
         [self setupDivider];
         [self setupDivider];
     }
@@ -65,7 +65,7 @@
     [btn setImage:[UIImage imageNamed:icon] forState:UIControlStateNormal];
     [btn setTitle:title forState:UIControlStateNormal];
     [btn setTitleColor:[UIColor colorWithRed:122/255.0 green:122/255.0 blue:122/255.0 alpha:1] forState:UIControlStateNormal];
-    btn.titleLabel.font = [UIFont systemFontOfSize:11];
+    btn.titleLabel.font = [UIFont systemFontOfSize:14];
     [self addSubview:btn];
     [self.btns addObject:btn];
     
@@ -113,11 +113,11 @@
     _status = status;
     
     // 转发
-    [self setupBtnCount:status.reposts_count btn:self.repostBtn title:@"转发"];
+    [self setupBtnCount:status.reposts_count btn:self.repostBtn title:@" 转发"];
     // 评论
-    [self setupBtnCount:status.comments_count btn:self.commentBtn title:@"评论"];
+    [self setupBtnCount:status.comments_count btn:self.commentBtn title:@" 评论"];
     // 赞
-    [self setupBtnCount:status.attitudes_count btn:self.attitudeBtn title:@"赞"];
+    [self setupBtnCount:status.attitudes_count btn:self.attitudeBtn title:@" 赞"];
 }
 
 -(void)setupBtnCount:(int)count btn:(UIButton *)btn title:(NSString *)title
@@ -126,12 +126,12 @@
     {
         if((count / 10000 ) > 0)
         {
-            title = [NSString stringWithFormat:@"%.1lf万",(double)count/10000];
-            title = [title stringByReplacingOccurrencesOfString:@".0" withString:@""];
+            title = [NSString stringWithFormat:@" %.1lf万",(double)count/10000];
+            title = [title stringByReplacingOccurrencesOfString:@" .0" withString:@""];
         }
         else
         {
-            title = [NSString stringWithFormat:@"%d",count];
+            title = [NSString stringWithFormat:@" %d",count];
         }
     }
     [btn setTitle:title forState:UIControlStateNormal];

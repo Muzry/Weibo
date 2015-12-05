@@ -19,6 +19,14 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "-[DDStatusFrame setStatus:]:DDStatusFrame.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.originalViewF">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "-[DDTextView drawRect:]:DDTextView.m">
          <PersistentStrings>
             <PersistentString

@@ -16,6 +16,7 @@
 #import "NSString+Extension.h"
 #import "DDStatusPhotosView.h"
 #import "DDIcoView.h"
+#import "DDStatusTextView.h"
 
 @interface DDStatusCell()
 /*原创微博*/
@@ -34,13 +35,13 @@
 /** 来源*/
 @property(nonatomic,weak) UILabel *sourcelabel;
 /** 正文*/
-@property(nonatomic,weak) UILabel *contentlabel;
+@property(nonatomic,weak) DDStatusTextView *contentlabel;
 
 /*转发*/
 /** 转发整体*/
 @property(nonatomic,weak) UIView *retweetView;
 /** 转发正文*/
-@property(nonatomic,weak) UILabel *retweetContentLabel;
+@property(nonatomic,weak) DDStatusTextView *retweetContentLabel;
 /** 转发配图*/
 @property(nonatomic,weak) DDStatusPhotosView *retweetphotosView;
 
@@ -130,8 +131,7 @@
     self.sourcelabel = sourcelabel;
     
     /** 正文*/
-    UILabel *contentlabel= [[UILabel alloc]init];
-    contentlabel.numberOfLines = 0;
+    DDStatusTextView *contentlabel= [[DDStatusTextView alloc]init];
     [self.originalView addSubview:contentlabel];
     self.contentlabel = contentlabel;
 }
@@ -144,8 +144,7 @@
     self.retweetView = retweetView;
     
     /** 正文*/
-    UILabel *retweetContentlabel= [[UILabel alloc]init];
-    retweetContentlabel.numberOfLines = 0;
+    DDStatusTextView *retweetContentlabel= [[DDStatusTextView alloc]init];
     [retweetView addSubview:retweetContentlabel];
     self.retweetContentLabel = retweetContentlabel;
     

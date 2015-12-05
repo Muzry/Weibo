@@ -48,6 +48,7 @@
 		D65EBAB91B9C5DE30036FB91 /* DDEmotionAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = D65EBAB81B9C5DE30036FB91 /* DDEmotionAttachment.m */; };
 		D666D6891B9B2E8F00243AD9 /* DDEmotionPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D666D6881B9B2E8F00243AD9 /* DDEmotionPageView.m */; };
 		D666D68C1B9B3F9F00243AD9 /* NSString+Emoji.m in Sources */ = {isa = PBXBuildFile; fileRef = D666D68B1B9B3F9F00243AD9 /* NSString+Emoji.m */; };
+		D66E517E1C12C13100705EB7 /* DDStatusTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = D66E517D1C12C13100705EB7 /* DDStatusTextView.m */; };
 		D674D49B1B8834960011C3EC /* DDLoadMoreFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = D674D49A1B8834960011C3EC /* DDLoadMoreFooter.xib */; };
 		D674D49E1B8954470011C3EC /* DDStatusCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D674D49D1B8954470011C3EC /* DDStatusCell.m */; };
 		D674D4A11B895B2E0011C3EC /* DDStatusFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = D674D4A01B895B2E0011C3EC /* DDStatusFrame.m */; };
@@ -211,6 +212,8 @@
 		D666D6881B9B2E8F00243AD9 /* DDEmotionPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDEmotionPageView.m; sourceTree = "<group>"; };
 		D666D68A1B9B3F9F00243AD9 /* NSString+Emoji.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+Emoji.h"; path = "../../Compose/View/NSString+Emoji.h"; sourceTree = "<group>"; };
 		D666D68B1B9B3F9F00243AD9 /* NSString+Emoji.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+Emoji.m"; path = "../../Compose/View/NSString+Emoji.m"; sourceTree = "<group>"; };
+		D66E517C1C12C13100705EB7 /* DDStatusTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDStatusTextView.h; sourceTree = "<group>"; };
+		D66E517D1C12C13100705EB7 /* DDStatusTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDStatusTextView.m; sourceTree = "<group>"; };
 		D674D49A1B8834960011C3EC /* DDLoadMoreFooter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DDLoadMoreFooter.xib; sourceTree = "<group>"; };
 		D674D49C1B8954470011C3EC /* DDStatusCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDStatusCell.h; sourceTree = "<group>"; };
 		D674D49D1B8954470011C3EC /* DDStatusCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDStatusCell.m; sourceTree = "<group>"; };
@@ -638,6 +641,8 @@
 				D654CAFF1B9047390008F1F9 /* DDStatusPhotosView.m */,
 				D6107F8F1B907092006C878F /* DDStatusPhotoView.h */,
 				D6107F901B907092006C878F /* DDStatusPhotoView.m */,
+				D66E517C1C12C13100705EB7 /* DDStatusTextView.h */,
+				D66E517D1C12C13100705EB7 /* DDStatusTextView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1067,6 +1072,7 @@
 				D674D4A11B895B2E0011C3EC /* DDStatusFrame.m in Sources */,
 				D6107F911B907092006C878F /* DDStatusPhotoView.m in Sources */,
 				D67825A11B74C4D000B9A426 /* main.m in Sources */,
+				D66E517E1C12C13100705EB7 /* DDStatusTextView.m in Sources */,
 				D6F4B5B61B82206E00757713 /* MBProgressHUD+MJ.m in Sources */,
 				D6A9038E1B949D7300CEEB7B /* DDComposePhotosView.m in Sources */,
 				D688F8E91B74FA5700EDCF66 /* MeTableViewController.m in Sources */,

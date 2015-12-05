@@ -31,7 +31,7 @@
     // @的规则
     NSString *atPattern = @"@[0-9a-zA-Z\\u4e00-\\u9fa5-_]+";
     // #话题#的规则
-    NSString *topicPattern = @"#[0-9a-zA-Z\\u4e00-\\u9fa5\\.]+#";
+    NSString *topicPattern = @"#[0-9a-zA-Z\\u4e00-\\u9fa5\\.\\,\\。\\，]+#";
     // url链接的规则
     NSString *urlPattern = @"(http|ftp|https):\\/\\/[\\w\\-_]+(\\.[\\w\\-_]+)+([\\w\\-\\.,@?^=%&amp;:/~\\+#]*[\\w\\-\\@?^=%&amp;/~\\+#])?";
     NSString *pattern = [NSString stringWithFormat:@"%@|%@|%@|%@", emotionPattern, atPattern, topicPattern, urlPattern];
