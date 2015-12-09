@@ -22,6 +22,7 @@
 #import "DDLoadMoreFooter.h"
 #import "DDStatusCell.h"
 #import "DDStatusFrame.h"
+#import "MJRefresh.h"
 
 @interface HomeViewController ()<DDDropDownMenuDelegate>
 
@@ -61,23 +62,16 @@
 
 -(void)setupUpRefresh
 {
-    DDLoadMoreFooter *footer = [DDLoadMoreFooter footer];
-    footer.hidden = YES;
-    self.tableView.tableFooterView = footer;
+    [self.tableView addFooterWithTarget:self action:@selector(loadMoreStatus)];
 }
 
 - (void)setupDownRefresh
 {
-    UIRefreshControl *control = [[UIRefreshControl alloc]init];
-    [control addTarget:self action:@selector(loadNewStatus:) forControlEvents:UIControlEventValueChanged];
     
-    [self.tableView addSubview:control];
-    
-    // 2.马上进入刷新
-    [control beginRefreshing];
+    [self.tableView addHeaderWithTarget:self action:@selector(loadNewStatus)];
     
     // 3.马上加载数据
-    [self loadNewStatus:control];
+    [self loadNewStatus];
 }
 
 - (void)showNewStatusCount:(int)count
@@ -113,7 +107,7 @@
     
 }
 
-- (void)loadNewStatus:(UIRefreshControl *)control
+- (void)loadNewStatus
 {
     // 1.请求管理者
     AFHTTPRequestOperationManager *mgr = [AFHTTPRequestOperationManager manager];
@@ -155,7 +149,7 @@
          
          [self.tableView reloadData];
          //结束刷新
-         [control endRefreshing];
+         [self.tableView headerEndRefreshing];
          [self showNewStatusCount:newStatusFrames.count];
          
      }
@@ -163,7 +157,7 @@
      {
          NSLog(@"请求失败-%@",error);
          //结束刷新
-         [control endRefreshing];
+         [self.tableView headerEndRefreshing];
      }];
 
 }
